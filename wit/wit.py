@@ -62,7 +62,10 @@ class Wit(object):
             return result.json()
 
     def get_intents(self):
-        return self._connector.get(body, 'intents')
+        result = self._connector.get({}, 'intents')
+        self.last_response = result
+        if result.status_code == 200:
+            return result.json()
 
     def get_corpus(self):
         return self._connector.get(body, 'corpus')
