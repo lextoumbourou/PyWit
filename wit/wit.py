@@ -68,13 +68,22 @@ class Wit(object):
             return result.json()
 
     def get_corpus(self):
-        return self._connector.get(body, 'corpus')
+        result = self._connector.get({}, 'corpus')
+        self.last_response = result
+        if result.status_code == 200:
+            return result.json()
 
     def get_entities(self):
-        return self._connector.get(body, 'entities')
+        result = self._connector.get({}, 'entities')
+        self.last_response = result
+        if result.status_code == 200:
+            return result.json()
 
     def get_entities_by_id(self, entity_id):
-        return self._connector.get(body, 'entities/{0}'.format(entity_id))
+        result = self._connector.get({}, 'entities/{0}'.format(entity_id))
+        self.last_response = result
+        if result.status_code == 200:
+            return result.json()
 
     def post_entity(self, entity_id, doc=None, values=None):
         data = {'id': entity_id}
@@ -83,7 +92,10 @@ class Wit(object):
         if values:
             data['values'] = values
 
-        return self._connector.put(data, 'entities', {'Content-Type': 'application/json'})
+        result = self._connector.put(data, 'entities', {'Content-Type': 'application/json'})
+        self.last_response = result
+        if result.status_code == 200:
+            return result.json()
 
     def update_entity(self, entity_id, doc=None, values=None):
         data = {'id': entity_id}
@@ -92,7 +104,13 @@ class Wit(object):
         if values:
             data['values'] = values
 
-        return self._connector.put(data, 'entities', {'Content-Type': 'application/json'})
+        result = self._connector.put(data, 'entities', {'Content-Type': 'application/json'})
+        self.last_response = result
+        if result.status_code == 200:
+            return result.json()
 
     def delete_entity(self, entity_id):
-        return self._connector.delete({}, 'entities/{0}'.format(entity_id))
+        result = self._connector.delete({}, 'entities/{0}'.format(entity_id))
+        self.last_response = result
+        if result.status_code == 200:
+            return result.json()
