@@ -120,3 +120,11 @@ class Wit(object):
     def delete_entity(self, entity_id):
         response = self._connector.delete({}, 'entities/{0}'.format(entity_id))
         return self._handle_response(response)
+
+    def put_entities(self, *args, **kwargs):
+        """Alias for update_entity"""
+        return self.update_entity(*args, **kwargs)
+
+    def delete_entities(self, *args, **kwargs):
+        """Alias for delete_entity"""
+        return self.delete_entity(*args, **kwargs)
