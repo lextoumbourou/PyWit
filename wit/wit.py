@@ -96,7 +96,8 @@ class Wit(object):
             body['values'] = values
 
         response = self._connector.put(
-            body, 'entities', {'Content-Type': 'application/json'})
+            body, 'entities',
+            extra_headers={'Content-Type': 'application/json'})
         return self._handle_response(response)
 
     def update_entity(self, entity_id, doc=None, values=None):
