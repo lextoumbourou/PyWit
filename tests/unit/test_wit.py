@@ -72,4 +72,3 @@ class UnitTest(unittest.TestCase):
         result = self.wit.post_entities(e_id, doc=doc)
         self.assertTrue('id' in result)
         self.assertTrue(result['doc'] == doc)
-
