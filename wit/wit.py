@@ -94,7 +94,7 @@ class Wit(object):
         response = self._connector.get({}, 'entities/{0}'.format(entity_id))
         return self._handle_response(response)
 
-    def post_entities(self, entity_id, doc=None, values=None):
+    def post_entity(self, entity_id, doc=None, values=None):
         body = {'id': entity_id}
         if doc:
             body['doc'] = doc
@@ -128,3 +128,7 @@ class Wit(object):
     def delete_entities(self, *args, **kwargs):
         """Alias for delete_entity"""
         return self.delete_entity(*args, **kwargs)
+
+    def post_entities(self, entity_id, doc=None, values=None):
+        """Alias for post_entity"""
+        return self.post_entity(*args, **kwargs)
