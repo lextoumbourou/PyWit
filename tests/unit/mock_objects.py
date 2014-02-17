@@ -1,5 +1,6 @@
 import json
 
+
 class MockConnector(object):
     def __init__(self, token, uri):
         self.response = None
@@ -16,6 +17,7 @@ class MockConnector(object):
     def get(self, body, resource, extra_headers={}):
         return self.response
 
+
 class MockResponse(object):
     def __init__(self, response, status_code):
         self.response = response
@@ -27,4 +29,3 @@ class MockResponse(object):
     @property
     def text(self):
         return json.dumps(self.response)
-

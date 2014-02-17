@@ -1,8 +1,8 @@
 import unittest
-import json
 
 import mock_objects as mocks
 import wit
+
 
 class UnitTest(unittest.TestCase):
     def setUp(self):
@@ -25,10 +25,10 @@ class UnitTest(unittest.TestCase):
         with self.assertRaises(wit.AuthenticationFailedError):
             self.wit.get_message(query)
 
-
     def test_speech_raises_exception_with_unsupported_content_type(self):
+        fh = open('tests/data/hello_world.wav')
         with self.assertRaises(wit.ContentTypeNotSupportedError):
-            self.wit.post_speech(open('tests/data/hello_world.wav'), 'tests/something.wav')
+            self.wit.post_speech(fh, 'tests/something.wav')
 
     def test_speech_from_file(self):
         query = 'hello world'

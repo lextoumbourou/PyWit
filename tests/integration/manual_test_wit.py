@@ -4,6 +4,7 @@ from getpass import getpass
 
 import wit
 
+
 class IntegrationTest(unittest.TestCase):
     def setUp(self):
         self.wit = wit.Wit(os.environ['WIT_ACCESS_TOKEN'])

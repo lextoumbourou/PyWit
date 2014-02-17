@@ -1,11 +1,13 @@
-import sys
 from connector import Connector
+
 
 class ContentTypeNotSupportedError(Exception):
     pass
 
+
 class AuthenticationFailedError(Exception):
     pass
+
 
 class ResourceNotFoundError(Exception):
     pass
@@ -47,8 +49,8 @@ class Wit(object):
         response = self._connector.get(body, 'message')
         return self._handle_response(response)
 
-    def post_speech(self, file_obj=None, content_type='', 
-               context=None, meta=None, msg_id=None):
+    def post_speech(self, file_obj=None, content_type='',
+                    context=None, meta=None, msg_id=None):
         """Return JSON from a posted sound file
 
         :param file_obj: A file object (needs to have the read() method)
@@ -115,9 +117,10 @@ class Wit(object):
         if values:
             data['values'] = values
 
-        response = self._connector.put(data, 'entities', {'Content-Type': 'application/json'})
+        response = self._connector.put(
+            data, 'entities', {'Content-Type': 'application/json'})
         return self._handle_response(response)
-        
+
     def delete_entity(self, entity_id):
         response = self._connector.delete({}, 'entities/{0}'.format(entity_id))
         return self._handle_response(response)
