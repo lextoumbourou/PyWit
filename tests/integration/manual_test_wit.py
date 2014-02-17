@@ -18,6 +18,10 @@ class IntegrationTest(unittest.TestCase):
         results = self.wit.post_speech(file_obj, content_type='wav')
         self.assertEquals(results['msg_body'], 'hello world')
 
+    def test_get_corpus(self):
+        result = self.wit.get_corpus()
+        self.assertEquals(type(result), list)
+
     def test_get_entities(self):
         result = self.wit.get_entities()
         self.assertEquals(type(result), list)
