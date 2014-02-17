@@ -4,6 +4,9 @@ from connector import Connector
 class ContentTypeNotSupportedError(Exception):
     pass
 
+class AuthenticationFailedError(Exception):
+    pass
+
 class Wit(object):
     """Wit object handles communication with wit.ai using their HTTP API"""
 
@@ -18,6 +21,14 @@ class Wit(object):
     def _is_valid_content_type(self, content_type):
         return content_type in self.SUPPORTED_CONTENT
 
+    def _handle_response(self, response):
+        self.last_response = response
+
+        if response.status_code == 200:
+            return response.json()
+        elif response.status_code == 401:
+            raise AuthenticationFailedError(response.text)
+
     def get_message(self, q, context=None, meta=None, msg_id=None):
         body = {'q': q}
         if context:
@@ -27,10 +38,8 @@ class Wit(object):
         if msg_id:
             body['msg_id'] = msg_id
 
-        result = self._connector.get(body, 'message')
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
+        response = self._connector.get(body, 'message')
+        return self._handle_response(response)
 
     def post_speech(self, file_obj=None, content_type='', 
                context=None, meta=None, msg_id=None):
@@ -50,53 +59,40 @@ class Wit(object):
 
         headers = {'Content-Type': 'audio/{0}'.format(content_type)}
 
-        result = self._connector.post(file_data, 'speech', headers)
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
+        response = self._connector.post(file_data, 'speech', headers)
+        return self._handle_response(response)
 
     def get_message_by_id(self, message_id):
-        result = self._connector.get({}, 'messages/{0}'.format(message_id))
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
+        response = self._connector.get({}, 'messages/{0}'.format(message_id))
+        return self._handle_response(response)
 
     def get_intents(self):
-        result = self._connector.get({}, 'intents')
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
+        response = self._connector.get({}, 'intents')
+        return self._handle_response(response)
 
     def get_corpus(self):
         headers = {'Accept': 'application/json'}
-        result = self._connector.get({}, 'corpus', extra_headers=headers)
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
+        response = self._connector.get({}, 'corpus', extra_headers=headers)
+        return self._handle_response(response)
 
     def get_entities(self):
-        result = self._connector.get({}, 'entities')
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
+        response = self._connector.get({}, 'entities')
+        return self._handle_response(response)
 
     def get_entities_by_id(self, entity_id):
         result = self._connector.get({}, 'entities/{0}'.format(entity_id))
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
+        return self._handle_response(response)
 
     def post_entity(self, entity_id, doc=None, values=None):
-        data = {'id': entity_id}
+        body = {'id': entity_id}
         if doc:
-            data['doc'] = doc
+            body['doc'] = doc
         if values:
-            data['values'] = values
+            body['values'] = values
 
-        result = self._connector.put(data, 'entities', {'Content-Type': 'application/json'})
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
+        response = self._connector.put(
+            body, 'entities', {'Content-Type': 'application/json'})
+        return self._handle_response(response)
 
     def update_entity(self, entity_id, doc=None, values=None):
         data = {'id': entity_id}
@@ -105,13 +101,9 @@ class Wit(object):
         if values:
             data['values'] = values
 
-        result = self._connector.put(data, 'entities', {'Content-Type': 'application/json'})
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
-
+        response = self._connector.put(data, 'entities', {'Content-Type': 'application/json'})
+        return self._handle_response(response)
+        
     def delete_entity(self, entity_id):
-        result = self._connector.delete({}, 'entities/{0}'.format(entity_id))
-        self.last_response = result
-        if result.status_code == 200:
-            return result.json()
+        response = self._connector.delete({}, 'entities/{0}'.format(entity_id))
+        return self._handle_response(response)

@@ -18,6 +18,14 @@ class UnitTest(unittest.TestCase):
         self.assertTrue(type(result) == dict)
         self.assertTrue(result['msg_body'] == query)
 
+    def test_get_message_raises_exception_on_auth_failure(self):
+        query = 'test'
+        expected = {'msg_body': query, 'msg_id': 'some-id', 'outcome': {}}
+        self.wit._connector.set_response(expected, 401)
+        with self.assertRaises(wit.AuthenticationFailedError):
+            self.wit.get_message(query)
+
+
     def test_speech_raises_exception_with_unsupported_content_type(self):
         with self.assertRaises(wit.ContentTypeNotSupportedError):
             self.wit.post_speech(open('tests/data/hello_world.wav'), 'tests/something.wav')
