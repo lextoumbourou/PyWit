@@ -94,7 +94,7 @@ class Wit(object):
         return self._handle_response(response)
 
     def get_entities_by_id(self, entity_id):
-        result = self._connector.get({}, 'entities/{0}'.format(entity_id))
+        response = self._connector.get({}, 'entities/{0}'.format(entity_id))
         return self._handle_response(response)
 
     def post_entity(self, entity_id, doc=None, values=None):
