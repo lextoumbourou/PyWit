@@ -44,12 +44,13 @@ class Wit(object):
         response = self._connector.get(body, 'message')
         return self._handle_response(response)
 
-    def post_speech(self, data=None, content_type='',
+    def post_speech(self, data=None, content_type='wav',
                     context=None, meta=None, msg_id=None):
         """Return JSON from a posted sound file
 
         :param data: A file-like object, bytes array or iterator
-        :param content_type: A string presenting the file type (eg wav, mpeg)
+        :param content_type: A string presenting the file type (eg wav, mpeg3)
+                             Default is wav
         :param context: Context object (see https://wit.ai/docs/api)
         :param meta: Additional request info (see https://wit.ai/docs/api)
         :param msg_id: A specific message id (see https://wit.ai/docs/api)
