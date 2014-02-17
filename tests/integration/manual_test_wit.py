@@ -17,6 +17,15 @@ class IntegrationTest(unittest.TestCase):
         results = self.wit.post_speech(file_obj, content_type='wav')
         self.assertEquals(results['msg_body'], 'hello world')
 
+    def test_get_entities(self):
+        result = self.wit.get_entities()
+        self.assertEquals(type(result), list)
+
+    def test_get_entities_by_id(self):
+        ents = self.wit.get_entities()
+        result = self.wit.get_entities_by_id(ents[0])
+        self.assertEquals(type(result), dict)
+
 if __name__ == "__main__":
     if 'WIT_ACCESS_TOKEN' not in os.environ:
         os.environ['WIT_ACCESS_TOKEN'] = getpass('Enter Wit Access Token: ')
