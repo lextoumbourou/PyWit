@@ -11,7 +11,7 @@ class MockConnector(object):
     def set_response(self, response, status_code):
         self.response = MockResponse(response, status_code)
 
-    def post(self, body, resource, extra_headers={}):
+    def post(self, body, resource, params={}, extra_headers={}):
         return self.response
 
     def get(self, body, resource, extra_headers={}):

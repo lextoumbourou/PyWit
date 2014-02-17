@@ -1,7 +1,9 @@
 import json
 
 from connector import Connector
-import exception
+from exception import (
+    AuthenticationFailedError, ResourceNotFoundError,
+    BadRequestError, ContentTypeNotSupportedError)
 
 
 class Wit(object):
@@ -21,12 +23,14 @@ class Wit(object):
     def _handle_response(self, response):
         self.last_response = response
 
-        if response.status_code == 200:
+        if response.status_code in (200, 201):
             return response.json()
         elif response.status_code == 401:
-            raise exception.AuthenticationFailedError(response.text)
+            raise AuthenticationFailedError(response.text)
         elif response.status_code == 404:
-            raise exception.ResourceNotFoundError(response.text)
+            raise ResourceNotFoundError(response.text)
+        else:
+            raise BadRequestError(response.text)
 
     def get_message(self, q, context=None, meta=None, msg_id=None):
         body = {'q': q}
@@ -54,7 +58,7 @@ class Wit(object):
         file_data = file_obj.read()
 
         if not self._is_valid_content_type(content_type):
-            raise exception.ContentTypeNotSupportedError
+            raise ContentTypeNotSupportedError
 
         params = {}
         if context:
