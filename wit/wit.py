@@ -107,14 +107,14 @@ class Wit(object):
         return self._handle_response(response)
 
     def update_entity(self, entity_id, doc=None, values=None):
-        data = {'id': entity_id}
+        body = {}
         if doc:
-            data['doc'] = doc
+            body['doc'] = doc
         if values:
-            data['values'] = values
+            body['values'] = values
 
         response = self._connector.put(
-            data, 'entities', {'Content-Type': 'application/json'})
+            json.dumps(body), 'entities/{0}'.format(entity_id), {'Content-Type': 'application/json'})
         return self._handle_response(response)
 
     def delete_entity(self, entity_id):
