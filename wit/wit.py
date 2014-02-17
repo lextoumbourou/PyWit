@@ -1,3 +1,5 @@
+import json
+
 from connector import Connector
 import exception
 
@@ -88,15 +90,15 @@ class Wit(object):
         response = self._connector.get({}, 'entities/{0}'.format(entity_id))
         return self._handle_response(response)
 
-    def post_entity(self, entity_id, doc=None, values=None):
+    def post_entities(self, entity_id, doc=None, values=None):
         body = {'id': entity_id}
         if doc:
             body['doc'] = doc
         if values:
             body['values'] = values
 
-        response = self._connector.put(
-            body, 'entities',
+        response = self._connector.post(
+            json.dumps(body), 'entities',
             extra_headers={'Content-Type': 'application/json'})
         return self._handle_response(response)
 

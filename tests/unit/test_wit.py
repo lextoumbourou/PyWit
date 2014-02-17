@@ -63,3 +63,13 @@ class UnitTest(unittest.TestCase):
         self.wit._connector.set_response(expected, 200)
         result = self.wit.get_entities()
         self.assertEquals(len(result), 3)
+
+    def test_post_entities(self):
+        e_id = 'something'
+        doc = 'A test'
+        self.wit._connector.set_response({
+            'doc': doc, 'id': e_id}, 201)
+        result = self.wit.post_entities(e_id, doc=doc)
+        self.assertTrue('id' in result)
+        self.assertTrue(result['doc'] == doc)
+
