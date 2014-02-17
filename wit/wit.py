@@ -7,6 +7,10 @@ class ContentTypeNotSupportedError(Exception):
 class AuthenticationFailedError(Exception):
     pass
 
+class ResourceNotFoundError(Exception):
+    pass
+
+
 class Wit(object):
     """Wit object handles communication with wit.ai using their HTTP API"""
 
@@ -28,6 +32,8 @@ class Wit(object):
             return response.json()
         elif response.status_code == 401:
             raise AuthenticationFailedError(response.text)
+        elif response.status_code == 404:
+            raise ResourceNotFoundError(response.text)
 
     def get_message(self, q, context=None, meta=None, msg_id=None):
         body = {'q': q}
