@@ -63,9 +63,17 @@ class Wit(object):
         if not self._is_valid_content_type(content_type):
             raise ContentTypeNotSupportedError
 
+        params = {}
+        if context:
+            params['context'] = context
+        if meta:
+            params['meta'] = meta
+        if msg_id:
+            params['msg_id'] = msg_id
+
         headers = {'Content-Type': 'audio/{0}'.format(content_type)}
 
-        response = self._connector.post(file_data, 'speech', headers)
+        response = self._connector.post(file_data, 'speech', params, headers)
         return self._handle_response(response)
 
     def get_message_by_id(self, message_id):
