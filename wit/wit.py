@@ -44,19 +44,16 @@ class Wit(object):
         response = self._connector.get(body, 'message')
         return self._handle_response(response)
 
-    def post_speech(self, file_obj=None, content_type='',
+    def post_speech(self, data=None, content_type='',
                     context=None, meta=None, msg_id=None):
         """Return JSON from a posted sound file
 
-        :param file_obj: A file object (needs to have the read() method)
+        :param data: A file-like object, bytes array or iterator
         :param content_type: A string presenting the file type (eg wav, mpeg)
         :param context: Context object (see https://wit.ai/docs/api)
         :param meta: Additional request info (see https://wit.ai/docs/api)
         :param msg_id: A specific message id (see https://wit.ai/docs/api)
         """
-
-        file_data = file_obj.read()
-
         if not self._is_valid_content_type(content_type):
             raise ContentTypeNotSupportedError
 
@@ -70,7 +67,7 @@ class Wit(object):
 
         headers = {'Content-Type': 'audio/{0}'.format(content_type)}
 
-        response = self._connector.post(file_data, 'speech', params, headers)
+        response = self._connector.post(data, 'speech', params, headers)
         return self._handle_response(response)
 
     def get_message_by_id(self, message_id):
