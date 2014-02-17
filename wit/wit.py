@@ -68,7 +68,8 @@ class Wit(object):
             return result.json()
 
     def get_corpus(self):
-        result = self._connector.get({}, 'corpus')
+        headers = {'Accept': 'application/json'}
+        result = self._connector.get({}, 'corpus', extra_headers=headers)
         self.last_response = result
         if result.status_code == 200:
             return result.json()

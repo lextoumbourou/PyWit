@@ -43,3 +43,9 @@ class UnitTest(unittest.TestCase):
         self.wit._connector.set_response(expected, 200)
         result = self.wit.get_message_by_id(msg_id)
         self.assertTrue(result['msg_id'] == msg_id)
+
+    def test_get_corpus(self):
+        expected = ['one', 'two', 'three']
+        self.wit._connector.set_response(expected, 200)
+        result = self.wit.get_corpus()
+        self.assertEquals(len(result), 3)
