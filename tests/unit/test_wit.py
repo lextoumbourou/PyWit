@@ -57,3 +57,9 @@ class UnitTest(unittest.TestCase):
         self.wit._connector.set_response(expected, 200)
         result = self.wit.get_corpus()
         self.assertEquals(len(result), 3)
+
+    def test_get_entities(self):
+        expected = ['one', 'two', 'three']
+        self.wit._connector.set_response(expected, 200)
+        result = self.wit.get_entities()
+        self.assertEquals(len(result), 3)
