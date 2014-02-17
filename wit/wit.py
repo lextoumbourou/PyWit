@@ -1,16 +1,5 @@
 from connector import Connector
-
-
-class ContentTypeNotSupportedError(Exception):
-    pass
-
-
-class AuthenticationFailedError(Exception):
-    pass
-
-
-class ResourceNotFoundError(Exception):
-    pass
+import exception
 
 
 class Wit(object):
@@ -33,9 +22,9 @@ class Wit(object):
         if response.status_code == 200:
             return response.json()
         elif response.status_code == 401:
-            raise AuthenticationFailedError(response.text)
+            raise exception.AuthenticationFailedError(response.text)
         elif response.status_code == 404:
-            raise ResourceNotFoundError(response.text)
+            raise exception.ResourceNotFoundError(response.text)
 
     def get_message(self, q, context=None, meta=None, msg_id=None):
         body = {'q': q}
@@ -63,7 +52,7 @@ class Wit(object):
         file_data = file_obj.read()
 
         if not self._is_valid_content_type(content_type):
-            raise ContentTypeNotSupportedError
+            raise exception.ContentTypeNotSupportedError
 
         params = {}
         if context:
