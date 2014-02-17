@@ -1,3 +1,5 @@
+import json
+
 class MockConnector(object):
     def __init__(self, token, uri):
         self.response = None
@@ -21,3 +23,8 @@ class MockResponse(object):
 
     def json(self):
         return self.response
+
+    @property
+    def text(self):
+        return json.dumps(self.response)
+
