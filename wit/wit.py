@@ -120,7 +120,7 @@ class Wit(object):
         response = self._connector.get({}, 'entities')
         return self._handle_response(response)
 
-    def get_entities_by_id(self, entity_id):
+    def get_entity_by_id(self, entity_id):
         """Return an entity from an id
 
         :param entity_id: ID of requested entity
@@ -166,7 +166,8 @@ class Wit(object):
             body['values'] = values
 
         response = self._connector.put(
-            json.dumps(body), 'entities/{0}'.format(entity_id), {'Content-Type': 'application/json'})
+            json.dumps(body), 'entities/{0}'.format(entity_id), {},
+            extra_headers={'Content-Type': 'application/json'})
         return self._handle_response(response)
 
     def delete_entity(self, entity_id):
@@ -179,9 +180,10 @@ class Wit(object):
         response = self._connector.delete({}, 'entities/{0}'.format(entity_id))
         return self._handle_response(response)
 
-    def get_entity_by_id(self, *args, **kwargs):
-        """Alias for get_entities_by_id"""
-        return self.update_entity(*args, **kwargs)
+    def get_entities_by_id(self, *args, **kwargs):
+        """Alias for get_entity_by_id"""
+        return self.get_entity_by_id(*args, **kwargs)
+
     def put_entities(self, *args, **kwargs):
         """Alias for update_entity"""
         return self.update_entity(*args, **kwargs)
