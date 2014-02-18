@@ -43,7 +43,7 @@ class Wit(object):
         Refer to https://wit.ai/docs/api#toc_3
         """
 
-        body = {'q': q}
+        body = {'q': query}
         if context:
             body['context'] = context
         if meta:
