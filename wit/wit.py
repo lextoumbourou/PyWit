@@ -177,7 +177,9 @@ class Wit(object):
 
         Refer to https://wit.ai/docs/api#toc_28
         """
-        response = self._connector.delete({}, 'entities/{0}'.format(entity_id))
+        response = self._connector.delete(
+            {}, 'entities/{0}'.format(entity_id),
+            extra_headers={'Content-Type': 'application/json'})
         return self._handle_response(response)
 
     def get_entities_by_id(self, *args, **kwargs):
