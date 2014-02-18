@@ -7,7 +7,7 @@ from exception import (
 
 
 class Wit(object):
-    """Wit object handles communication with wit.ai using their HTTP API"""
+    """Wit object exposes methods for communicating with Wit's HTTP API"""
 
     SUPPORTED_CONTENT = ['wav', 'mpeg3', 'ulaw']
 
@@ -32,7 +32,17 @@ class Wit(object):
         else:
             raise BadRequestError(response.text)
 
-    def get_message(self, q, context=None, meta=None, msg_id=None):
+    def get_message(self, query, context=None, meta=None, msg_id=None):
+        """Return extracted meaning from a sentence
+
+        :param query: User's query. Length is > 0 and < 256 chars
+        :param context: (optional) user's context
+        :param meta: (optional) Additional request info
+        :param msg_id: (optional) A specific message id
+
+        Refer to https://wit.ai/docs/api#toc_3
+        """
+
         body = {'q': q}
         if context:
             body['context'] = context
@@ -46,14 +56,18 @@ class Wit(object):
 
     def post_speech(self, data=None, content_type='wav',
                     context=None, meta=None, msg_id=None):
-        """Return JSON from a posted sound file
+        """Return meaning extracted from a posted sound file
 
         :param data: A file-like object, bytes array or iterator
+                     Anything that can be passed as the data kwarg
+                     to the requests.post module can be passed here
         :param content_type: A string presenting the file type (eg wav, mpeg3)
-                             Default is wav
-        :param context: Context object (see https://wit.ai/docs/api)
-        :param meta: Additional request info (see https://wit.ai/docs/api)
-        :param msg_id: A specific message id (see https://wit.ai/docs/api)
+                             Assumes wav by default
+        :param context: (optional) user's context
+        :param meta: (optional) Additional request info
+        :param msg_id: (optional) A specific message id
+
+        Refer to https://wit.ai/docs/api#toc_8
         """
         if not self._is_valid_content_type(content_type):
             raise ContentTypeNotSupportedError
@@ -72,27 +86,59 @@ class Wit(object):
         return self._handle_response(response)
 
     def get_message_by_id(self, message_id):
+        """Return a stored message for an id
+
+        :param message_id: message id
+
+        Refer to https://wit.ai/docs/api#toc_13
+        """
         response = self._connector.get({}, 'messages/{0}'.format(message_id))
         return self._handle_response(response)
 
     def get_intents(self):
+        """Return a list of intents (without their expressions)
+        
+        Refer to https://wit.ai/docs/api#toc_15
+        """
         response = self._connector.get({}, 'intents')
         return self._handle_response(response)
 
     def get_corpus(self):
+        """Return a list of validated expressions in your instance
+
+        Refer to https://wit.ai/docs/api#toc_17
+        """
         headers = {'Accept': 'application/json'}
         response = self._connector.get({}, 'corpus', extra_headers=headers)
         return self._handle_response(response)
 
     def get_entities(self):
+        """Return a list of entities for the instance
+
+        Refer to https://wit.ai/docs/api#toc_18
+        """
         response = self._connector.get({}, 'entities')
         return self._handle_response(response)
 
     def get_entities_by_id(self, entity_id):
+        """Return an entity from an id
+
+        :param entity_id: ID of requested entity
+
+        Refer to https://wit.ai/docs/api#toc_20
+        """
         response = self._connector.get({}, 'entities/{0}'.format(entity_id))
         return self._handle_response(response)
 
     def post_entity(self, entity_id, doc=None, values=None):
+        """Create a new entity
+
+        :param entity_id: ID of entity
+        :param doc: (optional) short sentence describing the entity
+        :param values: (optional) possible values for entity
+
+        Refer to https://wit.ai/docs/api#toc_22
+        """
         body = {'id': entity_id}
         if doc:
             body['doc'] = doc
@@ -105,6 +151,14 @@ class Wit(object):
         return self._handle_response(response)
 
     def update_entity(self, entity_id, doc=None, values=None):
+        """Update an entity with attributes
+
+        :param entity_id: ID of entity
+        :param doc: (optional) short sentence describing the entity
+        :param values: (optional) possible values for entity
+
+        Refer to https://wit.ai/docs/api#toc_25
+        """
         body = {}
         if doc:
             body['doc'] = doc
@@ -116,9 +170,18 @@ class Wit(object):
         return self._handle_response(response)
 
     def delete_entity(self, entity_id):
+        """Permanently remove an entity
+
+        :param entity_id: ID of entity
+
+        Refer to https://wit.ai/docs/api#toc_28
+        """
         response = self._connector.delete({}, 'entities/{0}'.format(entity_id))
         return self._handle_response(response)
 
+    def get_entity_by_id(self, *args, **kwargs):
+        """Alias for get_entities_by_id"""
+        return self.update_entity(*args, **kwargs)
     def put_entities(self, *args, **kwargs):
         """Alias for update_entity"""
         return self.update_entity(*args, **kwargs)
