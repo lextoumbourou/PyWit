@@ -2,7 +2,9 @@
 
 *Python bindings for the [Wit](http://wit.ai) HTTP API*
 
-## Usage
+[![Build Status](https://travis-ci.org/lextoumbourou/PyWit.png?branch=master)](https://travis-ci.org/lextoumbourou/PyWit)
+
+## Basic Usage
 
 ```
 >>> from wit import Wit
@@ -17,7 +19,24 @@
  u'outcome': {u'entities': {}, u'confidence': 0.525, u'intent': u'order'}}
 ```
 
-Read the [docs](http://pywit.readthedocs.org/en/latest/) for more.
+## Documentation
+
+Read the docs [here](http://pywit.readthedocs.org/en/latest/)
+
+## Tests
+
+### Unit (Offline)
+
+```
+> python -m unittest discover
+```
+
+### Integration (Online)
+
+```
+> export WIT_ACCESS_TOKEN=YOUR_TOKEN_GOES_HERE
+> python -m unittest test.integration.manual_test_wit
+```
 
 ## License
 
