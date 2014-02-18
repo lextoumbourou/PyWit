@@ -1,8 +1,8 @@
 # PyWit
 
-*Python bindings for the [Wit](http://wit.ai) HTTP API*
-
 [![Build Status](https://travis-ci.org/lextoumbourou/PyWit.png?branch=master)](https://travis-ci.org/lextoumbourou/PyWit)
+
+*Python bindings for the [Wit](http://wit.ai) HTTP API*
 
 ## Basic Usage
 
