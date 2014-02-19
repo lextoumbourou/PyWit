@@ -6,22 +6,27 @@
 Welcome to PyWit's documentation!
 =================================
 
-PyWit provides bindings to Wit's HTTP API. It's easy to get started,
-firstly work out :ref:`installation` works. Then take a look at some
-:ref:`usage_examples`. Then, you're ready to read the :ref:`api` guide.
+PyWit provides bindings to Wit's HTTP API.
+
+It's easy to get started!
+
+Firstly, work out :doc:`installation <installation>` works.
+
+Next take a look at some :doc:`usage examples <usage_examples>`.
+
+By then, you'll be ready to read the :doc:`API <api>` guide.
+
+Of course, for specifics about the Wit API, you'll need to consult their excellent `documentation <https://wit.ai/docs>`_.
+
 Have fun.
 
-Contents:
+Contents
+---------
 
 .. toctree::
    :maxdepth: 2
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+   index
+   installation
+   usage_examples
+   api
