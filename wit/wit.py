@@ -11,11 +11,12 @@ class Wit(object):
 
     SUPPORTED_CONTENT = ['wav', 'mpeg3', 'ulaw']
 
-    def __init__(self, token, connector=Connector):
+    def __init__(self, token, connector=Connector, raw_text=False):
         self.uri = 'https://api.wit.ai'
         self.token = token
         self._connector = connector(token, self.uri)
         self.last_response = None
+        self.raw_text = raw_text
 
     def _is_valid_content_type(self, content_type):
         return content_type in self.SUPPORTED_CONTENT
@@ -24,7 +25,10 @@ class Wit(object):
         self.last_response = response
 
         if response.status_code in (200, 201):
-            return response.json()
+            if self.raw_text:
+                return response.text
+            else:
+                return response.json()
         elif response.status_code == 401:
             raise AuthenticationFailedError(response.text)
         elif response.status_code == 404:

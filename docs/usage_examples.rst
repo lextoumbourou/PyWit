@@ -38,6 +38,6 @@ PyWit will output JSON data by default when there's a response from Wit's server
 
 ::
 
-    >>> w.output_json = False
+    >>> w.raw_text = True
 
 (Feature coming soon) You'll find a couple more examples of cool stuff to try in the **examples** directory.

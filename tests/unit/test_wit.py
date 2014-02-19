@@ -18,6 +18,14 @@ class UnitTest(unittest.TestCase):
         self.assertTrue(type(result) == dict)
         self.assertTrue(result['msg_body'] == query)
 
+    def test_get_message_outputs_text_when_set(self):
+        query = 'test'
+        expected = {'msg_body': query, 'msg_id': 'some-id', 'outcome': {}}
+        self.wit._connector.set_response(expected, 200)
+        self.wit.raw_text = True
+        result = self.wit.get_message(query)
+        self.assertTrue(type(result) == str)
+
     def test_get_message_raises_exception_on_auth_failure(self):
         query = 'test'
         expected = {'msg_body': query, 'msg_id': 'some-id', 'outcome': {}}
