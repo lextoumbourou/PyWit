@@ -1,8 +1,6 @@
 API
 ===
 
-Covers every method of PyWit
-
 Wit object
 ----------
 
