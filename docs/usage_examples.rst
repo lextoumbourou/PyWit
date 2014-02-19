@@ -1,8 +1,6 @@
 Usage Examples
 ==============
 
-## First Steps
-
 We'll need to start by initialising Wit using the token you'll find under **Settings**:
 
 ::
