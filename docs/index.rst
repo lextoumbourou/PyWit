@@ -8,17 +8,13 @@ Welcome to PyWit's documentation!
 
 PyWit provides bindings to Wit's HTTP API.
 
-It's easy to get started!
+It's easy to get started.
 
-Firstly, work out :doc:`installation <installation>` works.
+Firstly, work out how to :doc:`install <installation>` it. Next take a look at some :doc:`usage examples <usage_examples>`.
 
-Next take a look at some :doc:`usage examples <usage_examples>`.
-
-By then, you'll be ready to read the :doc:`API <api>` guide.
+By then, you'll be ready to read the :doc:`API Guide <api>`.
 
 Of course, for specifics about the Wit API, you'll need to consult their excellent `documentation <https://wit.ai/docs>`_.
-
-Have fun.
 
 Contents
 ---------
