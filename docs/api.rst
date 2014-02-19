@@ -1,4 +1,11 @@
-API Guide
-========
+API
+===
 
-Coming soon.
+Covers every method of PyWit
+
+Wit object
+----------
+
+.. autoclass:: wit.Wit
+   :members:
+   :inherited-members:
