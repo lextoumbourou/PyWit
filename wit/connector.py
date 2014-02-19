@@ -1,4 +1,3 @@
-# It's probably unnecessary to add the requests dependancy, but I'll look at removing it later
 import requests
 import urllib
 

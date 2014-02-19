@@ -97,7 +97,7 @@ class Wit(object):
 
     def get_intents(self):
         """Return a list of intents (without their expressions)
-        
+
         Refer to https://wit.ai/docs/api#toc_15
         """
         response = self._connector.get({}, 'intents')
@@ -194,6 +194,6 @@ class Wit(object):
         """Alias for delete_entity"""
         return self.delete_entity(*args, **kwargs)
 
-    def post_entities(self, entity_id, doc=None, values=None):
+    def post_entities(self, *args, **kwargs):
         """Alias for post_entity"""
         return self.post_entity(*args, **kwargs)

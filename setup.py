@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-
 from setuptools import setup
+
 
 setup(name='PyWit',
       version='0.1.0',
@@ -18,5 +18,4 @@ setup(name='PyWit',
       packages=['wit'],
       package_dir={'wit': 'wit'},
       url='https://github.com/lextoumbourou/PyWit',
-      install_requires=['requests']
-)
+      install_requires=['requests'])
