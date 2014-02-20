@@ -10,7 +10,7 @@ PyWit provides bindings to Wit's HTTP API.
 
 It's easy to get started.
 
-Firstly, work out how to :doc:`install <installation>` it. Next take a look at some :doc:`usage examples <usage_examples>`.
+Firstly, work out how to :ref:`install <installation>` it. Next take a look at some :doc:`usage <usage>` examples.
 
 By then, you'll be ready to read the :doc:`API Guide <api>`.
 

@@ -5,13 +5,13 @@ You can install PyWit via pip:
 
 ::
 
-    > pip install wit
+    > pip install PyWit
 
 Or if you're prefer, via easy_install:
 
 ::
 
-    > easy_install wit
+    > easy_install PyWit
 
 Or by checking out the latest version from Github and using the setup script:
 
