@@ -24,5 +24,5 @@ Contents
 
    index
    installation
-   usage_examples
+   usage
    api
