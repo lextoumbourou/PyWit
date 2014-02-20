@@ -63,7 +63,7 @@ class Wit(object):
         """Return meaning extracted from a posted sound file
 
         :param data: A file-like object, bytes array or iterator
-                     Anything that can be passed as the data kwarg
+                     Anything that can be passed as the data arg
                      to the ``requests.post`` method can be passed here
 
                      See http://requests.readthedocs.org/en/latest/api/
