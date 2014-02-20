@@ -41,3 +41,9 @@ Read the docs [here](http://pywit.readthedocs.org/en/latest/)
 ## License
 
 MIT
+
+## Contributors
+
+If you contributed to the project, feel free to add your name and/or Github username here.
+
+* Lex Toumbourou (@lextoumbourou) - origin author
