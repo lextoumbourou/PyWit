@@ -14,8 +14,7 @@ class Connector(object):
         headers = dict(headers.items() + extra_headers.items())
         url = "{0}/{1}".format(self.uri, resource)
 
-        result = req_method(url, data=body, headers=headers)
-        return result
+        return req_method(url, data=body, headers=headers)
 
     def get(self, body, resource, url_params={}, extra_headers={}):
         resource = resource + urllib.urlencode(url_params)
