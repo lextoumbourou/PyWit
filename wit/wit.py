@@ -64,7 +64,9 @@ class Wit(object):
 
         :param data: A file-like object, bytes array or iterator
                      Anything that can be passed as the data kwarg
-                     to the requests.post module can be passed here
+                     to the ``requests.post`` method can be passed here
+
+                     See http://requests.readthedocs.org/en/latest/api/
         :param content_type: A string presenting the file type (eg wav, mpeg3)
                              Assumes wav by default
         :param context: (optional) user's context
