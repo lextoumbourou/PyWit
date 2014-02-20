@@ -1,14 +1,14 @@
 Usage
 =====
 
-We start by initialising Wit using the token you'll find under your Wit account's `Settings <https://console.wit.ai/#/settings>`_.
+We start by initialising Wit using the token you'll find under your Wit account `Settings <https://console.wit.ai/#/settings>`_.
 
 ::
 
     >>> from wit import Wit
     >>> w = Wit('YOUR_TOKEN_WILL_GO_HERE')
 
-To return an extracted meaning from a sentence, we use the ``get_message`` method.
+To return an extracted meaning from a sentence, we use the ``get_message`` method...
 
 ::
 
@@ -17,9 +17,9 @@ To return an extracted meaning from a sentence, we use the ``get_message`` metho
      u'msg_id': u'67771674-25ad-40af-b3fe-f2806c9a092a',
      u'outcome': {u'confidence': 0.525, u'entities': {}, u'intent': u'order'}}
 
-Which is a simple wrapper around the `GET /message <https://wit.ai/docs/api#toc_3>`_ API call.
+...which is a simple wrapper around the `GET /message <https://wit.ai/docs/api#toc_3>`_ API call.
 
-You can send a sound file up for processing by passing a file handle to the ``post_speech`` method. Like this:
+You can send a sound file up for meaning extraction processing by passing a file-like object to the ``post_speech`` method. Like this:
 
 ::
 
