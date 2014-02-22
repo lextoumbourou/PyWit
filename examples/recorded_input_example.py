@@ -17,6 +17,7 @@ except ImportError:
     # path and try again
     path = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
     sys.path.append(path)
+    import wit
 
 # Demo below is taken from the Record demo at PyAudio's website.
 # The only variation is that we're writing to a string buffer
