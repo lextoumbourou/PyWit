@@ -23,7 +23,7 @@ Sends a wav up to Wit.ai for processing. The wav should be passed as a command l
 > python wav_input_example.py ./hello_world.wav 
 {u'msg_body': u'hello world',
  u'msg_id': u'9d8997dc-d509-49a8-8e54-d65a10f12692',
- u'outcome': {u'confidence': 0.545, u'entities': {}, u'intent': u'order'}}
+ u'outcome': {u'confidence': 0.545, u'entities': {}, u'intent': u'greeting'}}
 ```
 
 ## recorded_input_example.py
@@ -37,4 +37,9 @@ This demo is a little more complex than the other examples. It reads data in fro
 
 ```
 > python recorded_input_example.py
+* recording
+* done recording
+{u'msg_body': u'hello world',
+ u'msg_id': u'9d8997dc-d509-49a8-8e54-d65a10f12692',
+ u'outcome': {u'confidence': 0.545, u'entities': {}, u'intent': u'greeting'}}
 ```
