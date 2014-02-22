@@ -62,5 +62,5 @@ if __name__ == '__main__':
     wf.close()
 
     w = wit.Wit(wit_token)
-    result = w.post_speech(output_file)
+    result = w.post_speech(output_file.getvalue())
     pprint(result)
