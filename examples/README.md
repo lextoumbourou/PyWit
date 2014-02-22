@@ -3,7 +3,7 @@ Examples
 
 To run the examples, you should have the ```WIT_ACCESS_TOKEN``` env variable set, if not, you'll be prompted for the token.
 
-## ```user_input_example.py```
+## user_input_example.py
 
 Simply reads text from prompt and send to Wit.ai for processing.
 
@@ -15,7 +15,7 @@ What should I send up? Hello, cuz
  u'outcome': {u'confidence': 0.545, u'entities': {}, u'intent': u'greeting'}}
 ```
 
-## ```wav_input_example.py```
+## wav_input_example.py
 
 Sends a wav up to Wit.ai for processing. The wav should be passed as a command line arg. It will use the local hello_world.wav file if no argument is specified.
 
@@ -26,14 +26,14 @@ Sends a wav up to Wit.ai for processing. The wav should be passed as a command l
  u'outcome': {u'confidence': 0.545, u'entities': {}, u'intent': u'order'}}
 ```
 
-## ```recorded_input_example.py```
+## recorded_input_example.py
 
 You will need:
 
 * A microphone
 * [PyAudio](http://people.csail.mit.edu/hubert/pyaudio/) 
 
-This demo is a little more complex than the other examples. It reads data in from your microphone for 5 seconds, then writes it to a StringIO buffer, which is then sent up to Wit.Ai as chunk-encoded data.
+This demo is a little more complex than the other examples. It reads data in from your microphone for 3 seconds, writes it to a StringIO buffer, which is then sent straight up to Wit.ai.
 
 ```
 > python recorded_input_example.py
