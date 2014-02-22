@@ -44,6 +44,6 @@ PyWit will output JSON data by default when there's a response from Wit's server
 
     >>> w.raw_text = True
 
-You'll find a couple more examples of cool stuff to try in the **examples** directory (actually you won't yet - but soon you will, I promise!).
+You'll find a couple more examples of cool stuff to try in the **examples** directory.
 
 Most of the other Wit API calls have been implemented in PyWit, refer to the :doc:`API Guide <api>` for examples.
