@@ -9,6 +9,7 @@ try:
     import pyaudio
 except ImportError:
     print('Error: Make sure you install PyAudio before running this example.')
+    sys.exit()
 
 try:
     import wit
