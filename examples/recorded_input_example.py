@@ -15,7 +15,7 @@ try:
 except ImportError:
     # Wit isn't installed, so we'll add the parent directory to the system
     # path and try again
-    path = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
+    path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     sys.path.append(path)
     import wit
 

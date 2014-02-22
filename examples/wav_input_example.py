@@ -1,11 +1,12 @@
 import os
 import sys
 from pprint import pprint
+from getpass import getpass
 
 try:
     import wit
 except ImportError:
-    path = os.path.abspath(os.path.join(os.path.dirname(__file__),".."))
+    path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     sys.path.append(path)
     import wit
 
