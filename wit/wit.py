@@ -49,9 +49,9 @@ class Wit(object):
 
         body = {'q': query}
         if context:
-            body['context'] = context
+            body['context'] = json.dumps(context)
         if meta:
-            body['meta'] = meta
+            body['meta'] = json.dumps(meta)
         if msg_id:
             body['msg_id'] = msg_id
 
@@ -80,9 +80,9 @@ class Wit(object):
 
         params = {}
         if context:
-            params['context'] = context
+            params['context'] = json.dumps(context)
         if meta:
-            params['meta'] = meta
+            params['meta'] = json.dumps(meta)
         if msg_id:
             params['msg_id'] = msg_id
 
