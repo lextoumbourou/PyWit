@@ -40,8 +40,9 @@ class Wit(object):
         """Return extracted meaning from a sentence
 
         :param query: User's query. Length is > 0 and < 256 chars
-        :param context: (optional) user's context
-        :param meta: (optional) Additional request info
+        :param context: (optional) A dict representing user's context
+        :param meta: (optional) A dict representing any additional info to
+                                attach to the request
         :param msg_id: (optional) A specific message id
 
         Refer to https://wit.ai/docs/api#toc_3
