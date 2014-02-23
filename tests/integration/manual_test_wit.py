@@ -13,6 +13,12 @@ class IntegrationTest(unittest.TestCase):
         results = self.wit.get_message('Hello')
         self.assertTrue(type(results) == dict)
 
+    def test_message_accepts_context_as_dict(self):
+        context = {'timezone': 'Australia/Melbourne'}
+        results = self.wit.get_message('Hello', context)
+        self.assertTrue(type(results) == dict)
+        self.assertEquals(results['msg_body'], 'Hello')
+
     def test_speech_from_file(self):
         file_obj = open('tests/data/hello_world.wav')
         results = self.wit.post_speech(file_obj, content_type='wav')

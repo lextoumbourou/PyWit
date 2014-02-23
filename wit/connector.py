@@ -17,12 +17,15 @@ class Connector(object):
         return req_method(url, data=body, headers=headers)
 
     def get(self, body, resource, url_params={}, extra_headers={}):
-        resource = resource + urllib.urlencode(url_params)
+        if url_params:
+            resource = '{0}?{1}'.format(resource, urllib.urlencode(url_params))
         return self._request(
             requests.get, body, resource, extra_headers)
 
     def post(self, body, resource, url_params={}, extra_headers={}):
-        resource = resource + urllib.urlencode(url_params)
+        if url_params:
+            resource = '{0}?{1}'.format(resource, urllib.urlencode(url_params))
+        print resource
         return self._request(
             requests.post, body, resource, extra_headers)
 
