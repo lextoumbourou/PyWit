@@ -33,11 +33,6 @@ class UnitTest(unittest.TestCase):
         with self.assertRaises(wit.AuthenticationFailedError):
             self.wit.get_message(query)
 
-    def test_speech_raises_exception_with_unsupported_content_type(self):
-        fh = open('tests/data/hello_world.wav')
-        with self.assertRaises(wit.ContentTypeNotSupportedError):
-            self.wit.post_speech(fh, 'tests/something.wav')
-
     def test_speech_from_file(self):
         query = 'hello world'
         file_obj = open('tests/data/hello_world.wav')

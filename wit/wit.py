@@ -9,8 +9,6 @@ from exceptions import (
 class Wit(object):
     """Wit object exposes methods for communicating with Wit's HTTP API"""
 
-    SUPPORTED_CONTENT = ['wav', 'mpeg3', 'ulaw']
-
     def __init__(self, token, connector=Connector, raw_text=False):
         self.uri = 'https://api.wit.ai'
         self.token = token
@@ -18,8 +16,11 @@ class Wit(object):
         self.last_response = None
         self.raw_text = raw_text
 
-    def _is_valid_content_type(self, content_type):
-        return content_type in self.SUPPORTED_CONTENT
+    def _process_content_type(self, content_type):
+        if content_type.lower().startswith('audio/'):
+            content_type = content_type[6:]
+
+        return 'audio/' + content_type
 
     def _handle_response(self, response):
         self.last_response = response
@@ -76,9 +77,6 @@ class Wit(object):
 
         Refer to https://wit.ai/docs/api#toc_8
         """
-        if not self._is_valid_content_type(content_type):
-            raise ContentTypeNotSupportedError
-
         params = {}
         if context:
             params['context'] = json.dumps(context)
@@ -87,7 +85,8 @@ class Wit(object):
         if msg_id:
             params['msg_id'] = msg_id
 
-        headers = {'Content-Type': 'audio/{0}'.format(content_type)}
+        content_type = self._process_content_type(content_type)
+        headers = {'Content-Type': content_type}
 
         response = self._connector.post(data, 'speech', params, headers)
         return self._handle_response(response)

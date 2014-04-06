@@ -3,7 +3,7 @@ from setuptools import setup
 
 
 setup(name='PyWit',
-      version='0.1.4',
+      version='0.1.5',
       author='Lex Toumbourou',
       author_email='lextoumbourou@gmail.com',
       description='Python bindings for the Wit HTTP API',
