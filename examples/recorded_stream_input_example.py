@@ -10,11 +10,14 @@ except ImportError:
     print('Error: Make sure you install PyAudio before running this example.')
     sys.exit()
 
-# Wit isn't installed, so we'll add the parent directory to the system
-# path and try again
-path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-sys.path.append(path)
-import wit
+try:
+    import wit
+except ImportError: 
+    # Wit isn't installed, so we'll add the parent directory to the system
+    # path and try again
+    path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    sys.path.append(path)
+    import wit
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
