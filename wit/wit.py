@@ -3,7 +3,7 @@ import json
 from connector import Connector
 from exceptions import (
     AuthenticationFailedError, ResourceNotFoundError,
-    BadRequestError, ContentTypeNotSupportedError)
+    BadRequestError)
 
 
 class Wit(object):

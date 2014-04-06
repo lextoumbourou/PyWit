@@ -84,7 +84,3 @@ class UnitTest(unittest.TestCase):
         result = self.wit.post_entity(e_id, doc=doc)
         self.assertTrue('id' in result)
         self.assertTrue(result['doc'] == doc)
-
-    
-    def test_update_entity(self):
-        pass

@@ -1,7 +1,3 @@
-class ContentTypeNotSupportedError(Exception):
-    pass
-
-
 class AuthenticationFailedError(Exception):
     pass
 

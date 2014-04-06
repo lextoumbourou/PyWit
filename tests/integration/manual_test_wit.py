@@ -31,7 +31,8 @@ class IntegrationTest(unittest.TestCase):
 
     def test_raw_speech_from_file(self):
         file_obj = open('tests/data/hello_world.raw')
-        content_type = 'raw;encoding=signed-integer;bits=16;rate=44100;endian=little'
+        content_type = \
+            'raw;encoding=signed-integer;bits=16;rate=44100;endian=little'
         results = self.wit.post_speech(
             file_obj, content_type=content_type)
         self.assertEquals(results['msg_body'], 'hello world')

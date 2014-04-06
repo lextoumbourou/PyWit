@@ -3,7 +3,6 @@ import os
 from pprint import pprint
 from getpass import getpass
 from StringIO import StringIO
-import wave
 
 try:
     import pyaudio
@@ -24,19 +23,20 @@ RATE = 44100
 RECORD_SECONDS = 3
 # Change this based on your OSes settings. This should work for OSX, though.
 ENDIAN = 'little'
-CONTENT_TYPE = 'raw;encoding=signed-integer;bits=16;rate={0};endian={1}'.format(
-    RATE, ENDIAN)
+CONTENT_TYPE = \
+    'raw;encoding=signed-integer;bits=16;rate={0};endian={1}'.format(
+        RATE, ENDIAN)
+
 
 def record_and_stream():
     p = pyaudio.PyAudio()
 
     stream = p.open(
-            format=FORMAT, channels=CHANNELS, rate=RATE,
-            input=True, frames_per_buffer=CHUNK)
+        format=FORMAT, channels=CHANNELS, rate=RATE,
+        input=True, frames_per_buffer=CHUNK)
 
     print("* recording and streaming")
 
-    frames = []
     for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
         yield stream.read(CHUNK)
 
