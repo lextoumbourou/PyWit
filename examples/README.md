@@ -60,7 +60,5 @@ You might need to tweak the ```CONTENT_TYPE``` variable to match your OS's setti
 * done recording
 {u'msg_body': u'hello world',
  u'msg_id': u'b080bad5-41b6-4cf2-b188-db50a88bfaf8',
- u'outcome': {u'confidence': 0.515,
-              u'entities': {u'when': {u'value': u'now'}},
-              u'intent': u'play_music'}}
+ u'outcome': {u'confidence': 0.515, u'entities': {}, u'intent': u'greeting'}}
 ```
