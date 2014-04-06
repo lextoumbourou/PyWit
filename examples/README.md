@@ -43,3 +43,24 @@ This demo is a little more complex than the other examples. It reads data in fro
  u'msg_id': u'9d8997dc-d509-49a8-8e54-d65a10f12692',
  u'outcome': {u'confidence': 0.545, u'entities': {}, u'intent': u'greeting'}}
 ```
+
+### recorded_stream_input_example.py
+
+Same dependencies as ```recorded_input_example.py```
+
+The purpose of this example is to show how to stream raw audio straight from the microphone to Wit's servers.
+
+We take in audio from the microphone using the generator called ```record_and_stream``` which is passed in as the first argument to ```Wit.post_speech```.
+
+You might need to tweak the ```CONTENT_TYPE``` variable to match your OS's settings. It has been tested on OSX (Mountain Lion).
+
+```
+> python recorded_stream_input_example.py
+* recording
+* done recording
+{u'msg_body': u'hello world',
+ u'msg_id': u'b080bad5-41b6-4cf2-b188-db50a88bfaf8',
+ u'outcome': {u'confidence': 0.515,
+              u'entities': {u'when': {u'value': u'now'}},
+              u'intent': u'play_music'}}
+```

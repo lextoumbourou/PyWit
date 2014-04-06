@@ -1,14 +1,3 @@
-"""
-recorded_stream_input_example.py
-
-The purpose of this example is to show how to stream raw audio straight from 
-the microphone to Wit's servers.
-
-The we take in audio from the microphone using the generator called ```record_and_stream```
-this is passed in as the first argument to ```Wit.post_speech```.
-
-You might need to tweak the CONTENT_TYPE variable to match your OSes settings. It has been tested on OSX (Mountain Lion)
-"""
 import sys
 import os
 from pprint import pprint
