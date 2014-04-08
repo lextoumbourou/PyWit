@@ -31,6 +31,12 @@ Read the docs [here](http://pywit.readthedocs.org/en/latest/)
 > python -m unittest discover
 ```
 
+Or via nose:
+
+```
+> nosetests
+```
+
 ### Integration (Online)
 
 ```
