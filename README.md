@@ -1,6 +1,9 @@
 # PyWit
 
 [![Build Status](https://travis-ci.org/lextoumbourou/PyWit.png?branch=master)](https://travis-ci.org/lextoumbourou/PyWit)
+[![License](https://pypip.in/license/PyWit/badge.png)](https://pypi.python.org/pypi/PyWit)
+[![Latest Version](https://pypip.in/version/PyWit/badge.png)](https://pypi.python.org/pypi/PyWit)
+[![Downloads](https://pypip.in/download/PyWit/badge.png)](https://pypi.python.org/pypi/PyWit)
 
 *Python bindings for the [Wit](http://wit.ai) HTTP API*
 
