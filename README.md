@@ -48,6 +48,16 @@ Or via nose:
 
 MIT
 
+## Changelog
+
+* 0.2.0
+  * Added support for Wit's versioning system
+* 0.1.5
+  * Added support for raw audio
+  * Provided additional streamed audio example 
+* 0.1.4
+  * Initial PyPi-ready release
+
 ## Contributors
 
 If you contributed to the project, feel free to add your name and/or Github username here.
