@@ -1,7 +1,7 @@
 import unittest
-import urllib
 
 import wit
+
 
 class ConnectorTest(unittest.TestCase):
     def setUp(self):
@@ -17,5 +17,3 @@ class ConnectorTest(unittest.TestCase):
         connector = wit.Connector(self.token, self.uri, self.version)
         params = connector._get_versioned_params({})
         assert params == 'v={}'.format(self.version)
-
-

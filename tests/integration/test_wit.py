@@ -66,14 +66,12 @@ class TestWitOnline(unittest.TestCase):
         else:
             assert False
 
-
     def test_get_entities(self):
         if self.token:
             result = self.wit.get_entities()
             assert type(result) == list
         else:
             assert False
-
 
     def test_get_entities_by_id(self):
         if self.token:
