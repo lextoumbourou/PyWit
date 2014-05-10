@@ -28,20 +28,13 @@ Read the docs [here](http://pywit.readthedocs.org/en/latest/)
 ### Unit (Offline)
 
 ```
-> python -m unittest discover
+> nosetests tests/unit
 ```
-
-Or via nose:
-
-```
-> nosetests
-```
-
 ### Integration (Online)
 
 ```
 > export WIT_ACCESS_TOKEN=YOUR_TOKEN_GOES_HERE
-> python -m unittest test.integration.manual_test_wit
+> nosetests tests/integration
 ```
 
 ## License
@@ -52,6 +45,7 @@ MIT
 
 * 0.2.0
   * Added support for Wit's versioning system
+  * Improved tests
 * 0.1.5
   * Added support for raw audio
   * Provided additional streamed audio example 
