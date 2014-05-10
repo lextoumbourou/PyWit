@@ -44,7 +44,7 @@ This demo is a little more complex than the other examples. It reads data in fro
  u'outcome': {u'confidence': 0.545, u'entities': {}, u'intent': u'greeting'}}
 ```
 
-### recorded_stream_input_example.py
+## recorded_stream_input_example.py
 
 Same dependencies as ```recorded_input_example.py```
 

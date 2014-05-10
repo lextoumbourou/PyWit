@@ -53,3 +53,4 @@ MIT
 If you contributed to the project, feel free to add your name and/or Github username here.
 
 * Lex Toumbourou (@lextoumbourou) - origin author
+* Josh Deare (@doodles526)
