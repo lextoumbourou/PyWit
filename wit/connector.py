@@ -18,7 +18,8 @@ class Connector(object):
 
         headers = {'Authorization': 'Bearer {0}'.format(self.token)}
         headers = dict(headers.items() + extra_headers.items())
-        resource = '{0}?{1}'.format(resource, self._get_versioned_params(url_params))
+        resource = '{0}?{1}'.format(
+            resource, self._get_versioned_params(url_params))
         url = "{0}/{1}".format(self.uri, resource)
 
         return req_method(url, data=body, headers=headers)
@@ -28,18 +29,13 @@ class Connector(object):
             requests.get, body, resource, url_params, extra_headers)
 
     def post(self, body, resource, url_params={}, extra_headers={}):
-        if url_params:
-            resource = '{0}?{1}'.format(resource, urllib.urlencode(url_params))
         return self._request(
             requests.post, body, resource, url_params, extra_headers)
 
     def delete(self, body, resource, url_params={}, extra_headers={}):
-        if url_params:
-            resource = '{0}?{1}'.format(resource, urllib.urlencode(url_params))
         return self._request(
             requests.delete, body, resource, url_params, extra_headers)
 
     def put(self, body, resource, url_params={}, extra_headers={}):
-        
         return self._request(
             requests.put, body, resource, url_params, extra_headers)
