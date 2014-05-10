@@ -9,10 +9,14 @@ from exceptions import (
 class Wit(object):
     """Wit object exposes methods for communicating with Wit's HTTP API"""
 
-    def __init__(self, token, connector=Connector, raw_text=False):
+    def __init__(self,
+                 token,
+                 connector=Connector,
+                 raw_text=False,
+                 version='20140510'):
         self.uri = 'https://api.wit.ai'
         self.token = token
-        self._connector = connector(token, self.uri)
+        self._connector = connector(token, self.uri, version)
         self.last_response = None
         self.raw_text = raw_text
 
