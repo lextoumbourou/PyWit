@@ -1,4 +1,3 @@
-import unittest
 import os
 
 from nose.tools import raises
