@@ -51,6 +51,8 @@ MIT
 
 ## Changelog
 
+* 0.3.0
+	* Added Python3 support
 * 0.2.0
   * Added support for Wit's versioning system
   * Improved tests
