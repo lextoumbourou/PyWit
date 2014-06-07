@@ -7,7 +7,7 @@ from . import mock_objects as mocks
 import wit
 
 
-class TestWitOffline(unittest.TestCase):
+class TestWitOffline(object):
     def setUp(self):
         self.token = 'fake-token'
         self.uri = 'fake-uri'
@@ -89,3 +89,13 @@ class TestWitOffline(unittest.TestCase):
         result = self.wit.post_entity(e_id, doc=doc)
         assert 'id' in result
         assert result['doc'] == doc
+
+    @raises(wit.ResourceNotFoundError)
+    def test_raise_resource_not_found_if_api_call_returns_404(self):
+        self.wit._connector.set_response({}, 404)
+        self.wit.get_message('Anything')
+
+    @raises(wit.BadRequestError)
+    def test_raise_bad_request_if_api_call_returns_server_error(self):
+        self.wit._connector.set_response({}, 500)
+        self.wit.get_message('Anything')
