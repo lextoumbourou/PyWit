@@ -1,5 +1,6 @@
 import json
 
+from . import helpers
 from .connector import Connector
 from .exceptions import (
     AuthenticationFailedError, ResourceNotFoundError,
@@ -19,12 +20,6 @@ class Wit(object):
         self._connector = connector(token, self.uri, version)
         self.last_response = None
         self.raw_text = raw_text
-
-    def _process_content_type(self, content_type):
-        if content_type.lower().startswith('audio/'):
-            content_type = content_type[6:]
-
-        return 'audio/' + content_type
 
     def _handle_response(self, response):
         self.last_response = response
@@ -89,7 +84,7 @@ class Wit(object):
         if msg_id:
             params['msg_id'] = msg_id
 
-        content_type = self._process_content_type(content_type)
+        content_type = helpers.process_content_type(content_type)
         headers = {'Content-Type': content_type}
 
         response = self._connector.post(data, 'speech', params, headers)
