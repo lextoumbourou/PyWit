@@ -42,7 +42,7 @@ Read the docs [here](http://pywit.readthedocs.org/en/latest/)
 
 ## Python version support
 
-* Python 2.7 and higher (Python 2.6 should work with argparse installed ```pip install argparse```)
+* Python 2.7 and higher (Python 2.6 should work with argparse installed: ```pip install argparse```)
 * Python 3
 
 ## License
