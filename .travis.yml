@@ -1,5 +1,12 @@
 language: python
 python:
   - "2.7"
-install: pip install --use-mirrors requests nose
+  - "3.4"
+install:
+  - pip install --use-mirrors requests nose
+  - pip install coveralls
+
 script: nosetests tests/unit
+
+after_success:
+  coveralls

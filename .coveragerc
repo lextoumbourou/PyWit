@@ -1,0 +1,5 @@
+[report]
+omit =
+    */python?.?/*
+    */lib_pypy/_*.py
+    */site-packages/nose/*
