@@ -3,7 +3,7 @@ import os
 
 from nose.tools import raises
 
-import mock_objects as mocks
+from . import mock_objects as mocks
 import wit
 
 

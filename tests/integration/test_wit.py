@@ -10,7 +10,7 @@ class TestWitOnline(unittest.TestCase):
         try:
             self.token = os.environ['WIT_ACCESS_TOKEN']
         except KeyError:
-            print 'WIT Access token not set, skipping test'
+            print('WIT Access token not set, skipping test')
             self.token = None
 
         self.wit = wit.Wit(self.token)
@@ -38,7 +38,7 @@ class TestWitOnline(unittest.TestCase):
             meta = {'source': 'Something'}
             file_obj = open(
                 os.path.dirname(os.path.abspath(__file__)) +
-                '/../data/hello_world.wav')
+                '/../data/hello_world.wav', 'rb')
             results = self.wit.post_speech(
                 file_obj, content_type='wav',
                 context=context, meta=meta)
@@ -50,7 +50,7 @@ class TestWitOnline(unittest.TestCase):
         if self.token:
             file_obj = open(
                 os.path.dirname(os.path.abspath(__file__)) +
-                '/../data/hello_world.raw')
+                '/../data/hello_world.raw', 'rb')
             content_type = \
                 'raw;encoding=signed-integer;bits=16;rate=44100;endian=little'
             results = self.wit.post_speech(

@@ -1,5 +1,5 @@
 import requests
-import urllib
+from urllib.parse import urlencode
 
 
 class Connector(object):
@@ -11,13 +11,13 @@ class Connector(object):
     def _get_versioned_params(self, url_params):
         if 'v' not in url_params:
             url_params['v'] = self.version
-        return urllib.urlencode(url_params)
+        return urlencode(url_params)
 
     def _request(self, req_method, body, resource, url_params, extra_headers):
         """Return the JSON response if successful, otherwise return None"""
 
         headers = {'Authorization': 'Bearer {0}'.format(self.token)}
-        headers = dict(headers.items() + extra_headers.items())
+        headers.update(**extra_headers)
         resource = '{0}?{1}'.format(
             resource, self._get_versioned_params(url_params))
         url = "{0}/{1}".format(self.uri, resource)

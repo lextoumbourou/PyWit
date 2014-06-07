@@ -1,7 +1,7 @@
 import json
 
-from connector import Connector
-from exceptions import (
+from .connector import Connector
+from .exceptions import (
     AuthenticationFailedError, ResourceNotFoundError,
     BadRequestError)
 

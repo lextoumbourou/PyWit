@@ -1,1 +1,1 @@
-from wit import *
+from .wit import *
