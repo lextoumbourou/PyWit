@@ -5,6 +5,8 @@
 [![Latest Version](https://pypip.in/version/PyWit/badge.png)](https://pypi.python.org/pypi/PyWit)
 [![Downloads](https://pypip.in/download/PyWit/badge.png)](https://pypi.python.org/pypi/PyWit)
 
+*Note: Wit.ai now provides an official Python SDK also called [pywit](https://github.com/wit-ai/pywit). It is the recommended way for developing Wit applications in Python.*
+
 *Python bindings for the [Wit](http://wit.ai) HTTP API*
 
 ## Basic Usage
