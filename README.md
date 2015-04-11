@@ -11,7 +11,7 @@
 
 ## Basic Usage
 
-```
+```python
 >>> from wit import Wit
 >>> w = Wit('YOUR_TOKEN_GOES_HERE')
 >>> w.get_message('It puts the lotion in the basket')
@@ -33,12 +33,12 @@ Read the docs [here](http://pywit.readthedocs.org/en/latest/)
 
 ### Unit (Offline)
 
-```
+```bash
 > nosetests tests/unit
 ```
 ### Integration (Online)
 
-```
+```bash
 > export WIT_ACCESS_TOKEN=YOUR_TOKEN_GOES_HERE
 > nosetests tests/integration
 ```
