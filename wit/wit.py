@@ -14,7 +14,7 @@ class Wit(object):
                  token,
                  connector=Connector,
                  raw_text=False,
-                 version='20140510'):
+                 version='20151107'):
         self.uri = 'https://api.wit.ai'
         self.token = token
         self._connector = connector(token, self.uri, version)
