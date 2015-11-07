@@ -1,4 +1,4 @@
-# PyWit
+# PyWit (Unofficial)
 
 [![Build Status](https://travis-ci.org/lextoumbourou/PyWit.png?branch=master)](https://travis-ci.org/lextoumbourou/PyWit)
 [![License](https://pypip.in/license/PyWit/badge.png)](https://pypi.python.org/pypi/PyWit)
