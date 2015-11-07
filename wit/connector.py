@@ -28,8 +28,11 @@ class Connector(object):
         return req_method(url, data=body, headers=headers)
 
     def get(self, body, resource, url_params={}, extra_headers={}):
+        if body:
+            url_params.update(body)
+
         return self._request(
-            requests.get, body, resource, url_params, extra_headers)
+            requests.get, {}, resource, url_params, extra_headers)
 
     def post(self, body, resource, url_params={}, extra_headers={}):
         return self._request(
