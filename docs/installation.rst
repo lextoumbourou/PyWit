@@ -21,7 +21,7 @@ Or by checking out the latest version from Github and using the setup script:
     > cd PyWit
     > python setup.py install
 
-PyWit has only the `requests <http://requests.readthedocs.org/en/latest/>`_ module as a dependancy. You can install that via pip, if you have to:
+PyWit has only the `requests <http://requests.readthedocs.org/en/latest/>`_ module as a dependency. You can install that via pip, if you have to:
 
 ::
 
